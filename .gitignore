@@ -1,5 +1,8 @@
 __pycache__/
+<<<<<<< HEAD
 .vscode/
+=======
+>>>>>>> b5022b7dae7640cb82299fa081f67dbfa8d20a40
 
 #environments
 venv/
