@@ -7,19 +7,43 @@ from django.db import models
 
 class Question (models.Model):
 	
-	def category_default():
-	    return 'C++'
-
 	question_text = models.TextField('Текст вопроса')
-	answer_text = models.CharField('Ответ', max_length = 100, null = True)
-	TEST_CATEGORY = [
-        ('Java', 'Java'),
-        ('C++', 'C++'),
+
+	true_answer = models.CharField('Правильный ответ', max_length = 50, default = 'Введите ответ', null = False, blank = False)
+
+
+	DIFFICULTY = [
+	    ('Easy','Easy'),
+	    ('Medium', 'Medium'),
+	    ('Hard', 'Hard'),
 	]
-	category = models.CharField('Категории', max_length = 100, 
-		choices = TEST_CATEGORY, default = category_default())
+	difficulty = models.CharField('Сложность', max_length = 50,
+		choices = DIFFICULTY, default = 'Выберите сложность')
+
+
+	CATEGORY = [
+		('Java', 'Java'),
+		('C++', 'C++'),
+	]
+
+	category = models.CharField('Категория', max_length = 100, 
+		choices = CATEGORY, default = 'Выберите тему')
+
 
 	class Meta:
 		verbose_name = 'Вопрос'
 		verbose_name_plural = 'Вопросы'
 
+
+
+
+
+class PossibleAnswer (models.Model):
+	question = models.ForeignKey(Question,
+		on_delete = models.CASCADE)
+
+	answer = models.CharField('Ответ', max_length = 50)
+
+	class Meta:
+		verbose_name = 'Ответ'
+		verbose_name_plural = 'Ответы'
