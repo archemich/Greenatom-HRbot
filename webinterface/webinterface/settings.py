@@ -31,7 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'questions.apps.QuestionsConfig',
+    'tests.apps.TestsConfig',
+    'peopleandmeetings.apps.PeopleandmeetingsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
