@@ -26,5 +26,3 @@ class Person(models.Model):
 	class Meta():
 		verbose_name = 'Человек'
 		verbose_name_plural = 'Люди'
-
-
