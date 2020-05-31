@@ -1,15 +1,17 @@
 from telebot import apihelper
 import telebot
 
-
 # Bot token
 TOKEN = '1223276408:AAGcuXPkeJ2NKtp29FX8y0itiwJiv6WxqAA'
 bot = telebot.TeleBot(TOKEN)
 
+# Bot behavior settings
+FIRST_X_LEADERS = 5
+QUESTIONS_AMOUNT = 10
 
 # Proxy settings
-ip = '85.97.176.245'
-port = '4145'
+ip = '185.161.211.25'
+port = '1080'
 apihelper.proxy = {
     'https': 'socks5://{}:{}'.format(ip, port)
 }
@@ -24,4 +26,4 @@ DONTUNDERSTAND = 'Я всего лишь бот, я такого не поним
 
 
 # Database
-FIRSTXLEADERS = 5
+DB_DIR = "../db.sqlite3"
