@@ -1,12 +1,11 @@
-import telebot
 import config
 import utils
 from telebot import types
 
+bot = config.bot
 
-bot = telebot.TeleBot(config.TOKEN)
 
-meetupOnGoing = True
+meetupOnGoing = config.meetupOnGoing
 markupkeyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
 inlinekeyboard = types.InlineKeyboardMarkup()
 
@@ -44,10 +43,14 @@ def help(message):
 def anytext(message):
     s = message.text
     if s == ButtonFAQ.text:
-        utils.show_faq()
+        utils.show_faq(message.chat.id)
 
     elif s == ButtonLeaders.text:
-        utils.show_leaders()
+        utils.show_leaders(message.chat.id)
+
+    elif meetupOnGoing is True:
+        if s == inButtontest.text:
+            utils.start_test(message.chat.id)
 
     else:
         bot.send_message(message.chat.id, config.DONTUNDERSTAND,
@@ -55,4 +58,5 @@ def anytext(message):
                          reply_markup=markupkeyboard)
 
 
-bot.infinity_polling(True)
+if __name__ == '__main__':
+    bot.infinity_polling()
