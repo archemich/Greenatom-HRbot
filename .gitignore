@@ -3,3 +3,6 @@ __pycache__/
 
 #environments
 venv/
+
+#somestaff
+tbot/test.py
